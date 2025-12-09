@@ -3,522 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$VITAL - PULSECHAIN BEST TOKEN EVER?!! (PROBABLY)</title>
+    <title>$VITAL - PULSECHAIN BEST TOKEN</title>
     <style>
-        /* FONTES - PIXEL ART STYLE */
-        @font-face {
-            font-family: 'Press Start 2P';
-            src: url('https://fonts.cdnfonts.com/s/17398/PressStart2P-Regular.woff') format('woff'); /* Exemplo de fonte pixel, pode precisar de CORS */
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* RESET MEIO TOSCO */
-        * {
+        /* FONTE PADRÃO "MEME" */
+        body {
+            font-family: 'Comic Sans MS', 'Comic Neue', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
-            color: black; /* Default text color */
+            /* FUNDO GERADO VIA CSS (NÃO QUEBRA NUNCA) */
+            background-color: #ff00ff;
+            background-image: 
+                linear-gradient(45deg, #ff66ff 25%, transparent 25%, transparent 75%, #ff66ff 75%, #ff66ff),
+                linear-gradient(45deg, #ff66ff 25%, transparent 25%, transparent 75%, #ff66ff 75%, #ff66ff);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: black;
+            overflow-x: hidden;
         }
 
-        /* BODY GERAL - CAOS VISUAL */
-        body {
-            background-color: #ff00ff; /* PulseChain Pink */
-            background-image: url('https://i.imgur.com/K0wQ9Gj.gif'); /* Um GIF de fundo animado e tosco (exemplo, ou seu próprio) */
-            background-repeat: repeat;
-            background-size: 150px 150px;
-            overflow-x: hidden; /* Prevent horizontal scroll from bad design */
-            cursor: url('https://i.imgur.com/X9YJ6qQ.png'), auto; /* Cursor de moeda (exemplo, ou seu próprio) */
-        }
-
-        /* TOP BANNER "BROKEN NEWS" - NOVO! */
-        .top-news-banner {
-            background-color: #ff0000; /* Red for urgency */
-            border-bottom: 7px solid #ffff00; /* Yellow border */
-            padding: 15px 20px;
+        /* BARRA NO TOPO - NOTÍCIAS */
+        .top-banner {
+            background-color: red;
+            color: yellow;
+            font-weight: bold;
             text-align: center;
-            position: fixed; /* Fixed at top */
+            padding: 10px;
+            border-bottom: 5px solid yellow;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            position: fixed;
             width: 100%;
             top: 0;
-            left: 0;
             z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-        .top-news-banner .news-text {
-            font-family: 'Press Start 2P', cursive; /* Pixel font */
-            font-size: 1.5rem;
-            color: #ffffff; /* White text */
-            text-shadow: 2px 2px 0px black;
-            animation: glitchText 1.5s infinite alternate;
-        }
-        .top-news-banner .blinking-light {
-            width: 25px;
-            height: 25px;
-            background-color: #00ff00; /* Green light */
-            border-radius: 50%;
-            border: 3px solid #ffff00;
-            animation: blinkLight 0.5s infinite alternate;
-        }
-        @keyframes glitchText {
-            0% { transform: translate(0); text-shadow: 2px 2px 0px black; }
-            20% { transform: translate(-1px, 1px); text-shadow: -2px -2px 0px #00ffff; }
-            40% { transform: translate(1px, -1px); text-shadow: 2px 2px 0px #ff00ff; }
-            60% { transform: translate(-2px, 2px); text-shadow: -1px 1px 0px #ffff00; }
-            80% { transform: translate(2px, -2px); text-shadow: 1px -1px 0px black; }
-            100% { transform: translate(0); text-shadow: 2px 2px 0px black; }
-        }
-        @keyframes blinkLight {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
         }
 
-        /* NAVIGATION "TORTA" */
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.8); /* Dark background for contrast */
-            padding: 10px 0;
+        /* NAVEGAÇÃO MEIO TORTA */
+        .nav-bar {
+            margin-top: 60px; /* Espaço pro banner fixo */
+            background: black;
             text-align: center;
-            border-bottom: 7px solid #00ffff; /* Cyan border */
-            position: sticky;
-            top: 80px; /* Adjusted to be below the new top banner */
-            z-index: 999;
-            transform: rotate(-1deg); /* Slightly tilted */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            animation: bounceIn 1s ease-out;
+            padding: 10px;
+            transform: rotate(-1deg);
+            border: 3px dashed cyan;
         }
-        .navbar a {
-            color: #00ff00; /* Neon Green */
+        .nav-bar a {
+            color: lime;
             text-decoration: none;
             font-size: 1.5rem;
-            font-weight: bold;
             margin: 0 15px;
-            padding: 5px 10px;
-            border: 2px dashed #ff00ff; /* Pink dashed border */
-            transition: all 0.2s ease-in-out;
-            display: inline-block;
-            text-shadow: 1px 1px 0px black;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #ff00ff;
         }
-        .navbar a:hover {
-            background-color: #ff00ff; /* Pink background on hover */
+        .nav-bar a:hover {
+            background: white;
             color: black;
-            transform: scale(1.1) rotate(2deg);
+            text-shadow: none;
         }
 
-        /* MAIN CONTENT - FLEXIBLE & CHAOTIC */
-        .container {
+        /* CONTAINER PRINCIPAL */
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
             display: flex;
-            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-            justify-content: space-around;
-            align-items: flex-start; /* Align items to the top */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
             padding: 20px;
-            gap: 30px; /* Space between sections */
-            margin-top: 180px; /* Adjust for fixed headers */
         }
 
-        /* LEFT SIDE - VITALELK'S SELF-PORTRAIT & BUTTONS */
-        .left-panel {
-            flex: 1 1 300px; /* Allows panel to grow/shrink */
-            min-width: 280px;
-            max-width: 400px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 10px double black;
+        /* PAINEL ESQUERDO - INFO DO TOKEN */
+        .info-panel {
+            background: white;
+            border: 8px solid black;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.5);
             padding: 20px;
             text-align: center;
-            box-shadow: 15px 15px 0px rgba(0,0,0,0.7);
-            transform: rotate(3deg); /* Slightly tilted */
+            flex: 1 1 300px;
+            max-width: 400px;
+            transform: rotate(2deg);
         }
-        .left-panel img {
-            width: 250px;
+        .logo {
+            width: 200px;
             height: auto;
-            border: 7px ridge #ff00ff; /* Ridge border */
-            margin-bottom: 20px;
-            animation: bounceIn 1s ease-out;
-        }
-        .left-panel h1 {
-            font-size: 3.5rem;
-            color: #ff4500; /* Gas Orange */
-            text-shadow: 3px 3px 0px #00ff00;
-            margin-bottom: 10px;
-            animation: flicker 1.5s infinite alternate;
-        }
-        .left-panel p {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .social-buttons .btn {
-            background-color: #000;
-            color: white;
-            padding: 12px 25px;
-            font-size: 1.3rem;
-            border: 3px dashed #ff00ff;
-            text-decoration: none;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-        .social-buttons .btn:hover {
-            transform: scale(1.05) rotate(-5deg);
-            background-color: #333;
+            border: 5px solid lime;
+            border-radius: 50%;
         }
         .btn-buy {
-            background-color: #00ff00; /* Neon Green */
+            display: block;
+            background: lime;
             color: black;
-            border: 5px solid #ff00ff;
-            font-size: 1.8rem;
-            padding: 15px 35px;
-            margin-top: 30px;
-            box-shadow: 10px 10px 0px red;
-            animation: shake 0.5s infinite;
-        }
-        .btn-buy:hover {
-            transform: translate(5px, 5px) scale(1.02);
-            box-shadow: 5px 5px 0px red;
-            animation: none;
-        }
-        .ca-address {
-            background-color: #ff00ff;
-            color: black;
-            padding: 10px;
-            border: 3px solid black;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            word-break: break-all;
-            animation: blinkBg 2s infinite alternate;
-            cursor: pointer;
-        }
-        .ca-address:active { /* Feedback for copy */
-            background-color: #00ff00;
-            color: white;
-        }
-
-
-        /* RIGHT SIDE - COMIC VIEWER */
-        .right-panel {
-            flex: 2 1 600px; /* Takes more space, but shrinks */
-            min-width: 300px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 10px double #00ffff; /* Cyan double border */
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
             padding: 15px;
-            text-align: center;
-            box-shadow: -15px 15px 0px rgba(0,0,0,0.7);
-            transform: rotate(-2deg); /* Slightly tilted */
+            border: 4px solid black;
+            margin-top: 20px;
+            box-shadow: 5px 5px 0 red;
+            transition: transform 0.1s;
         }
-        .comic-display {
+        .btn-buy:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 red;
+        }
+
+        /* PAINEL DIREITO - QUADRINHOS (COMIC VIEWER) */
+        .comic-panel {
+            flex: 2 1 500px;
+            background: #eee;
+            border: 8px solid blue;
+            box-shadow: -10px 10px 0px rgba(0,0,0,0.5);
+            padding: 20px;
+            text-align: center;
+            transform: rotate(-1deg);
+        }
+        .comic-frame {
+            background: white;
+            border: 4px solid black;
+            padding: 10px;
+            margin-bottom: 20px;
+            min-height: 300px;
+        }
+        .comic-img {
             width: 100%;
             height: auto;
-            min-height: 400px; /* Minimum height for better layout */
-            border: 5px solid black;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            opacity: 1; /* Initial opacity */
-            transition: opacity 0.3s ease-in-out; /* Fade transition */
+            display: block;
+            max-width: 100%;
         }
-        .comic-navigation {
+        .comic-controls {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
             gap: 10px;
         }
-        .comic-nav-btn {
-            background-color: #ff4500; /* Gas Orange */
-            color: white;
-            padding: 10px 20px;
+        .btn-nav {
+            flex: 1;
+            padding: 15px;
             font-size: 1.2rem;
-            border: 3px solid black;
-            box-shadow: 5px 5px 0px black;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', sans-serif;
             cursor: pointer;
-            transition: all 0.1s;
-            flex-grow: 1; /* Make buttons fill space */
+            border: 3px solid black;
+            background: orange;
+            color: white;
+            text-shadow: 1px 1px 0 black;
+            box-shadow: 4px 4px 0 black;
         }
-        .comic-nav-btn:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 3px 3px 0px black;
-            background-color: #e03f00;
-        }
-        .comic-nav-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
+        .btn-nav:hover { background: #ff5722; }
+        .btn-nav:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 black; }
+        .btn-nav:disabled { background: gray; cursor: not-allowed; box-shadow: none; transform: none;}
 
-        /* VOCABULARY SECTION - PART OF LORE */
-        #lore {
-            flex: 1 1 100%; /* Takes full width below other panels */
-            text-align: center;
-            margin-top: 50px;
-        }
-        #lore h2 {
-            font-size: 3rem;
-            color: #00ff00;
-            text-shadow: 3px 3px 0px black;
-            animation: flicker 2s infinite alternate;
-        }
-        #lore div {
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 8px groove #ff00ff;
+        /* SEÇÃO LORE - CORRIGIDA */
+        .lore-section {
+            width: 100%;
+            background: white;
+            border: 10px groove purple;
             padding: 30px;
-            margin: 0 auto;
-            max-width: 800px;
-            text-align: left;
-            box-shadow: 10px 10px 0px black;
+            margin-top: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-        #lore ul {
-             list-style-type: '&#x2620; '; /* Skull emoji for list items */
-             margin-left: 20px;
-        }
-        #lore ul li {
-            margin-bottom: 10px;
-        }
-
-        /* FOOTER "DESORGANIZADO" */
-        footer {
-            background-color: black;
-            color: #00ff00; /* Neon Green */
-            padding: 30px 20px;
+        .lore-title {
+            font-size: 3rem;
+            color: lime;
+            text-shadow: 3px 3px 0 black; /* Contorno preto grosso */
+            -webkit-text-stroke: 1px black;
             text-align: center;
+            margin-top: 0;
+        }
+        .lore-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .lore-list {
+            list-style: none;
+            padding: 0;
+        }
+        .lore-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        .highlight { color: red; font-weight: bold; }
+
+        /* RODAPÉ */
+        footer {
+            text-align: center;
+            background: black;
+            color: white;
+            padding: 20px;
             margin-top: 50px;
-            border-top: 10px dotted #ffff00; /* Ugly yellow dotted border */
-            font-size: 1rem;
-            line-height: 1.5;
-            text-shadow: 1px 1px 0px rgba(255,0,255,0.5); /* Pink shadow */
-            position: relative;
-            z-index: 10; /* Ensure it's above background gif */
+            border-top: 5px solid yellow;
         }
-        footer a {
-            color: #00ffff; /* Cyan links */
-            text-decoration: underline;
-            margin: 0 5px;
-        }
-        footer p {
-            color: #00ff00; /* Ensure footer paragraphs are green */
-        }
-        footer .disclaimer {
-            font-size: 0.8rem;
-            color: #ccc;
+
+        /* CAIXA DE CA */
+        .ca-box {
+            background: cyan;
+            padding: 10px;
+            border: 2px dashed black;
+            font-family: monospace;
+            cursor: pointer;
             margin-top: 15px;
+            font-weight: bold;
         }
 
-        /* ANIMATIONS */
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 3px 3px 0px #00ff00; }
-            20%, 24%, 55% { text-shadow: none; }
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0) rotate(0); }
-            10% { transform: translateX(-5px) rotate(-2deg); }
-            20% { transform: translateX(5px) rotate(2deg); }
-            30% { transform: translateX(-5px) rotate(-2deg); }
-            40% { transform: translateX(5px) rotate(2deg); }
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-        @keyframes blinkBg {
-            0% { background-color: #ff00ff; }
-            50% { background-color: #ff66ff; }
-            100% { background-color: #ff00ff; }
-        }
-
-        /* RESPONSIVE DESIGN - CAOS ADAPTADO */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
-            .top-news-banner {
-                padding: 10px;
-                font-size: 1.2rem;
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-            .top-news-banner .news-text { font-size: 1rem; }
-            .top-news-banner .blinking-light { width: 15px; height: 15px; }
-
-            .navbar { font-size: 1.2rem; margin: 0 8px; padding: 3px 8px; border-width: 1px; top: 60px; }
-            .container { flex-direction: column; align-items: center; padding: 10px; margin-top: 150px; }
-            .left-panel, .right-panel {
-                transform: none; /* Remove tilt on mobile */
-                box-shadow: 5px 5px 0px rgba(0,0,0,0.7);
-                margin-bottom: 20px;
-                max-width: 95%; /* Take almost full width */
-                min-width: unset;
-                flex-basis: auto;
-            }
-            .left-panel img { width: 200px; }
-            .left-panel h1 { font-size: 2.5rem; }
-            .left-panel p { font-size: 1rem; }
-            .social-buttons { flex-direction: column; gap: 10px; }
-            .social-buttons .btn { width: 80%; margin: 0 auto; }
-            .btn-buy { font-size: 1.5rem; padding: 12px 25px; }
-            .comic-nav-btn { font-size: 1rem; padding: 8px 15px; }
-            footer { padding: 20px 10px; font-size: 0.7rem; }
-            #lore h2 { font-size: 2rem; }
+            .main-container { flex-direction: column; }
+            .info-panel, .comic-panel { transform: none; width: 100%; max-width: none; box-sizing: border-box; }
+            .lore-title { font-size: 2rem; }
+            .btn-buy { font-size: 1.5rem; }
         }
-        @media (max-width: 480px) {
-            .top-news-banner .news-text { font-size: 0.8rem; }
-            .navbar { padding: 5px 0; top: 50px; }
-            .navbar a { font-size: 1rem; margin: 0 5px; }
-            .container { margin-top: 120px; }
-            .left-panel img { width: 150px; }
-            .left-panel h1 { font-size: 2rem; }
-            .btn-buy { font-size: 1.2rem; padding: 10px 20px; }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="top-news-banner">
-        <div class="blinking-light"></div>
-        <div class="news-text">
-            BREAKING NEWS: VITAL IS HERE! GAS FEES ARE DEAD! $VITAL IS FUTURE!
-        </div>
-        <div class="blinking-light"></div>
+    <div class="top-banner">
+        🚨 BREAKING: GAS IS DEAD. LONG LIVE RAMEN. $VITAL IS HERE. 🚨
     </div>
 
-    <nav class="navbar">
-        <a href="#about">WHO IS $VITAL?</a>
-        <a href="#comic">THE COMIC (REAL)</a>
+    <div class="nav-bar">
+        <a href="#token">TOKEN</a>
+        <a href="#comic">COMIC BOOK</a>
         <a href="#lore">SECRET LORE</a>
-        <a href="#contact">CONTACT (MAYBE)</a>
-    </nav>
+    </div>
 
-    <div class="container">
+    <div class="main-container">
 
-        <div id="about" class="left-panel">
-            <img src="logo.png" alt="Vitalek Buterout Face" class="logo-img">
-            <h1>$VITAL</h1>
-            <p><strong>Vitalek Buterout!</strong> <br> Ex-King of Gasland! New King of Ramen! <br> I fled from the Gas Monster, now I make new home on PulseChain! <br> No fees! Just vibes! (And ramen!) <br> Richard Heart's couch is kinda comfy.</p>
-
-            <div class="social-buttons">
-                <a href="https://twitter.com" target="_blank" class="btn">
-                    <span style="font-size: 1.5rem;">&#x1D54F;</span> TWEETER (X)
-                </a>
-                <a href="https://t.me/vitalekbuterout_official" target="_blank" class="btn">
-                    TELEGRAM (JOIN OR BE GASS)
-                </a>
-            </div>
-
-            <a href="https://pump.tires/how-it-works" target="_blank" class="btn btn-buy">
-                BUY $VITAL NOW! <br><small>(PLS I NEED RAMEN)</small>
+        <div id="token" class="info-panel">
+            <img src="logo.png" alt="Vitalek Face" class="logo">
+            <h1 style="font-size: 3rem; margin: 10px 0; color: purple; text-shadow: 2px 2px 0 lime;">$VITAL</h1>
+            <p style="font-size: 1.3rem;"><strong>Vitalek Buterout</strong></p>
+            <p>The refugee King of Crypto.</p>
+            
+            <a href="https://pump.tires/how-it-works" target="_blank" class="btn-buy">
+                BUY NOW!<br><small>(PLS I HUNGRY)</small>
             </a>
 
-            <p class="ca-address" onclick="copyToClipboard(this)">
-                CA: 0x... (Will be on Pump.Tires Soon! Click to copy!)
-            </p>
-        </div>
+            <div class="ca-box" onclick="copyCA(this)">
+                CA: 0x... (CLICK TO COPY)
+            </div>
 
-        <div id="comic" class="right-panel">
-            <h2 style="font-size: 2.5rem; color: #ff00ff; text-shadow: 2px 2px 0px black; margin-bottom: 20px;">
-                VITAL'S EXODUS: THE COMIC!
-            </h2>
-            <img id="comicPage" src="page1.png" alt="Vitalek Comic Page 1" class="comic-display">
-            <div class="comic-navigation">
-                <button id="prevPage" class="comic-nav-btn"> &lt;&lt; PREV PAGE (GASS FEES) </button>
-                <button id="nextPage" class="comic-nav-btn"> NEXT PAGE (NO FEES) &gt;&gt; </button>
+            <div style="margin-top: 20px;">
+                <a href="https://twitter.com" target="_blank" style="font-size: 1.5rem; text-decoration: none;">🐦 TWITTER</a>
+                <br><br>
+                <a href="https://t.me" target="_blank" style="font-size: 1.5rem; text-decoration: none;">✈️ TELEGRAM</a>
             </div>
         </div>
 
-        <section id="lore">
-            <h2>VITAL'S SECRET KNOWLEDGE</h2>
-            <div>
-                <p><strong>Origin Story (Real, Not Fake):</strong> Vitalek was the king of "Gasland". But his subjects (validators) got greedy and ate all his food (and your money). He fled on a raft made of rejected blocks and arrived at PulseChain Island. He sleeps on Richard Heart's couch.</p>
-                <br>
-                <p><strong>The Mission (Serious Business):</strong> He wants to build a "New Ethereeeum" (the $VITAL token) that is only for cool people, with no fees. He promises ramen. Maybe.</p>
-                <br>
-                <h3>Vitalek's Vocabulary (Very Important):</h3>
-                <ul>
-                    <li><strong style="color:red;">Gass:</strong> The enemy. It takes your money. It smells like old socks.</li>
-                    <li><strong style="color:red;">Sharding:</strong> He confuses it with "Sharting" (an intestinal accident). Very messy. Don't do it on the blockchain.</li>
-                    <li><strong style="color:red;">Merge:</strong> He thinks it's a wedding. He's still waiting for his invitation.</li>
-                    <li><strong style="color:red;">Layer 2:</strong> He calls it a "Band-aid". It hides the problem, but the leg is still broken.</li>
-                </ul>
-                <br>
-                <h3>Vitalek's Twitter Interactions (Very Smart):</h3>
-                <ul>
-                    <li>"Please send 1 PLS. I need to buy ramen. My ETH is stuck in bridge for 3 years."</li>
-                    <li>"Why PulseChain so fast? Did you put turbo on the server? Can I copy code? Pls."</li>
-                </ul>
+        <div id="comic" class="comic-panel">
+            <h2 style="font-size: 2.5rem; margin-top: 0; color: blue;">THE LEGEND OF VITAL</h2>
+            
+            <div class="comic-frame">
+                <img id="comicImage" src="page1.png" alt="Comic Page" class="comic-img">
             </div>
-        </section>
+
+            <div class="comic-controls">
+                <button type="button" class="btn-nav" id="btnPrev" onclick="changePage(-1)">
+                    &lt;&lt; BACK
+                </button>
+                <span id="pageIndicator" style="font-size: 1.5rem; font-weight: bold; padding: 10px;">PAGE 1/6</span>
+                <button type="button" class="btn-nav" id="btnNext" onclick="changePage(1)">
+                    NEXT &gt;&gt;
+                </button>
+            </div>
+        </div>
+
+        <div id="lore" class="lore-section">
+            <h2 class="lore-title">VITAL'S SECRET KNOWLEDGE</h2>
+            <div class="lore-content">
+                <p><strong>Origin Story (Real, Not Fake):</strong> Vitalek was the king of "Gasland". But his subjects (validators) got greedy and ate all his food. He fled on a raft made of rejected blocks and arrived at PulseChain Island. He currently sleeps on Richard Heart's couch.</p>
+                
+                <p><strong>The Mission:</strong> To build a "New Ethereeeum" ($VITAL) that is only for cool people. Zero fees. 100% Ramen.</p>
+
+                <h3>📚 Vitalek's Dictionary:</h3>
+                <ul class="lore-list">
+                    <li><span class="highlight">&gt; Gass:</span> The Enemy. It burns money. It smells like sulfur and sadness.</li>
+                    <li><span class="highlight">&gt; Sharding:</span> He confuses it with "Sharting" (accident). Don't ask him about it.</li>
+                    <li><span class="highlight">&gt; Merge:</span> He thinks it's a wedding ceremony. He bought a tuxedo for nothing.</li>
+                    <li><span class="highlight">&gt; Layer 2:</span> A "Band-aid". It hides the broken bone but doesn't fix it.</li>
+                </ul>
+
+                <h3>🐦 Famous Tweets:</h3>
+                <div style="background: #e1f5fe; padding: 15px; border-left: 5px solid blue; margin-bottom: 10px;">
+                    "Please send 1 PLS. I need to buy ramen. My ETH is stuck in bridge for 3 years."
+                </div>
+                <div style="background: #e1f5fe; padding: 15px; border-left: 5px solid blue;">
+                    "Why PulseChain so fast? Did you put turbo on the server? Can I copy code? Pls."
+                </div>
+            </div>
+        </div>
 
     </div>
 
-    <footer id="contact">
-        <p style="font-size: 1.3rem; margin-bottom: 10px;">
-            This website is powered by pure ramen energy and the tears of Gasland validators.<br>
-            Made by Vitalek (with some help from Richard Heart's old PC).
-        </p>
-        <p>
-            <a href="https://pump.tires/how-it-works" target="_blank">BUY $VITAL HERE</a> | 
-            <a href="https://twitter.com" target="_blank">TWEETER (X)</a> | 
-            <a href="#" target="_blank">MY BROKEN BLOG</a> | 
-            <a href="#" target="_blank">GIVE ME FREE RAMEN</a>
-        </p>
-        <p class="disclaimer">
-            &copy; 2025 Vitalek Buterout. <br>
-            NOT FINANCIAL ADVICE. I AM A CARTOON. <br>
-            Please don't sue. I have no money. Only ramen.
-        </p>
+    <footer>
+        <p>&copy; 2025 Vitalek Buterout | PulseChain Meme Dept.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Not financial advice. I am a cartoon living on a blockchain.</p>
     </footer>
 
     <script>
-        const comicPage = document.getElementById('comicPage');
-        const prevPageBtn = document.getElementById('prevPage');
-        const nextPageBtn = document.getElementById('nextPage');
-        const totalPages = 6; // Adjust this if you add/remove pages
+        // LÓGICA DO QUADRINHO SIMPLIFICADA
         let currentPage = 1;
+        const totalPages = 6;
+        
+        const imgElement = document.getElementById('comicImage');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const indicator = document.getElementById('pageIndicator');
 
-        function updateComicPage() {
-            // Apply fade out effect
-            comicPage.style.opacity = 0;
+        function changePage(direction) {
+            // Atualiza o número da página
+            currentPage += direction;
+
+            // Garante que não saia dos limites (segurança extra)
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            // Troca a imagem
+            imgElement.src = 'page' + currentPage + '.png';
+            
+            // Atualiza o texto "Page X/6"
+            indicator.textContent = 'PAGE ' + currentPage + '/' + totalPages;
+
+            // Habilita/Desabilita botões
+            btnPrev.disabled = (currentPage === 1);
+            btnNext.disabled = (currentPage === totalPages);
+        }
+
+        // COPIAR CA
+        function copyCA(element) {
+            const text = "0x... (WAIT FOR LAUNCH)";
+            navigator.clipboard.writeText(text);
+            const originalText = element.innerText;
+            element.innerText = "COPIED!";
+            element.style.background = "lime";
             setTimeout(() => {
-                comicPage.src = `page${currentPage}.png`;
-                // Apply fade in effect after source is updated
-                comicPage.style.opacity = 1;
-                prevPageBtn.disabled = currentPage === 1;
-                nextPageBtn.disabled = currentPage === totalPages;
-            }, 300); // Match this duration with the CSS transition for opacity
+                element.innerText = originalText;
+                element.style.background = "cyan";
+            }, 1000);
         }
 
-        prevPageBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                updateComicPage();
-            }
-        });
-
-        nextPageBtn.addEventListener('click', () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                updateComicPage();
-            }
-        });
-
-        // Initialize comic viewer
-        updateComicPage();
-
-        // Copy CA address function
-        function copyToClipboard(element) {
-            const textToCopy = "0x... (Will be on Pump.Tires Soon!)"; // Replace with actual CA
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                element.textContent = "COPIED! (Soon!)";
-                setTimeout(() => {
-                    element.textContent = "CA: 0x... (Will be on Pump.Tires Soon! Click to copy!)";
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert("Failed to copy! Your browser is gass!");
-            });
-        }
+        // Inicializa o estado dos botões
+        changePage(0);
     </script>
 
 </body>
