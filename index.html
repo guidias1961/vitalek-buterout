@@ -47,16 +47,66 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* --- HEADER --- */
-        .marquee-container {
-            background: #ff00ff;
-            color: yellow;
+        /* --- NOVO HEADER: BARRA DE FERRAMENTAS RETRO --- */
+        .retro-toolbar {
+            background: #c0c0c0; /* Cinza Windows 95 */
+            border-bottom: 3px solid #404040;
+            padding: 5px 10px;
+            font-family: 'Tahoma', sans-serif; /* Fonte de sistema antiga */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #808080;
+            position: relative;
+            z-index: 100;
+        }
+
+        .win-btn {
+            width: 30px;
+            height: 30px;
+            background: #c0c0c0;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #404040;
+            border-bottom: 2px solid #404040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            padding: 10px;
-            border-bottom: 4px solid white;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px #ff00ff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: black;
+            user-select: none;
+        }
+        .win-btn:active {
+            border: 2px solid #404040;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+
+        .address-bar {
+            flex-grow: 1;
+            background: white;
+            border: 2px solid #808080;
+            border-bottom: 2px solid #fff; /* Inset effect */
+            border-right: 2px solid #fff;
+            padding: 4px 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: black;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .status-badge {
+            background: navy;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-right: 10px;
         }
 
         /* --- LAYOUT CENTRAL --- */
@@ -77,6 +127,7 @@
             padding: 10px;
             position: relative;
             text-align: center;
+            margin-top: 20px;
         }
 
         .comic-header-bar {
@@ -105,7 +156,6 @@
             max-width: 100%;
             height: auto;
             display: block;
-            /* Efeito sutil ao trocar */
             opacity: 0; 
             transition: opacity 0.2s ease-in;
         }
@@ -214,6 +264,7 @@
             }
             .widget { transform: none !important; }
             .btn-comic { padding: 10px 15px; font-size: 1.2rem; }
+            .address-bar { font-size: 0.7rem; } /* Diminui a fonte da barra no mobile */
         }
 
     </style>
@@ -226,10 +277,20 @@
         <p style="font-size: 1rem; color: #ff00ff;">Downloading RAM...</p>
     </div>
 
-    <div class="marquee-container">
-        <marquee scrollamount="12">
-            🚀 VITAL IS HERE 🚀 NO GAS 🚀 JUST RAMEN 🚀 PULSECHAIN SAVIOR 🚀 BUY NOW OR STAY POOR FOREVER 🚀 ETH IS SLOW 🚀 VITAL IS FAST 🚀
-        </marquee>
+    <div class="retro-toolbar">
+        <div class="win-btn" title="Back (Broken)">⬅</div>
+        <div class="win-btn" title="Forward (Broken)">➡</div>
+        <div class="win-btn" title="Stop Loading">🛑</div>
+        <div class="win-btn" title="Refresh Ramen">🍜</div>
+
+        <div class="address-bar">
+            <span class="status-badge">NOT SECURE</span>
+            <span>C:\Users\Vitalek\Desktop\HOW_TO_KILL_GAS_FEES.exe</span>
+        </div>
+
+        <div class="win-btn" style="width: auto; padding: 0 10px; font-size: 0.8rem;">
+            GO!
+        </div>
     </div>
 
     <div class="container">
@@ -317,6 +378,11 @@
                         initComic();
                     }
                 };
+                // Caso a imagem falhe (ex: 404), ainda conta para não travar o site
+                img.onerror = () => {
+                    loadedCount++;
+                    if (loadedCount === totalPages) initComic();
+                }
                 preloadedImages[i] = img; // Salva no índice correspondente (1 a 6)
             }
         }
@@ -348,7 +414,9 @@
 
         function updateDisplay() {
             // Usa a imagem que JÁ está na memória do navegador
-            imgElement.src = preloadedImages[currentPage].src;
+            if (preloadedImages[currentPage]) {
+                imgElement.src = preloadedImages[currentPage].src;
+            }
             imgElement.classList.add('loaded'); // Fade in
             
             pageLabel.innerText = `PAGE ${currentPage}/${totalPages}`;
