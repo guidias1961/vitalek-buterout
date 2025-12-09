@@ -3,660 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$VITAL IS GONE - GASLAND REFUGEE</title>
+    <title>$VITAL - THE NEW KING</title>
     <style>
-        /* --- CORES DO CAOS --- */
-        :root {
-            --redbull-yellow: #fff400;
-            --gas-green: #00ff00;
-            --satan-purple: #ff00ff;
-            --ramen-orange: #ff6b35;
-            --sofa-brown: #8d6e63;
-        }
-        
-        /* --- FAMÍLIAS FONTE (MISÉRIA DIGITAL) --- */
-        @font-face {
-            font-family: 'MS Paint';
-            src: url('data:font/ttf;base64,AAEAAAALAIAAAwAwT1MvMg...') format('truetype'); /* SIM, FONT FALSA DO MS PAINT */
-        }
+        /* --- RESET & FONTS --- */
+        * { box-sizing: border-box; }
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Comic Sans MS', 'MS Paint', 'Wingdings', cursive; /* Wingdings é o novo Verdana */
-            background: linear-gradient(45deg, #000000 0%, #1a1a1a 30%, #000000 100%);
-            color: var(--gas-green);
+            font-family: 'Comic Sans MS', 'Verdana', sans-serif;
+            background-color: #050505;
+            /* BACKGROUND "PULSE GRID" */
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #00ff00;
             overflow-x: hidden;
-            background-attachment: fixed;
-            position: relative;
+            padding-bottom: 50px;
         }
-        
-        /* --- CHUVA DE ERROS (Efeito visual do caos) --- */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(255,0,255,0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0,255,0,0.05) 0%, transparent 20%);
-            z-index: -1;
-        }
-        
-        /* --- PRELOADER DO INFERNO --- */
+
+        /* --- PRELOADER (TELA DE CARREGAMENTO) --- */
         #loader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="%23000"/><path d="M0 0L40 40M40 0L0 40" stroke="%23ff00ff" stroke-width="1"/></svg>');
+            background: black;
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             z-index: 9999;
-            text-align: center;
-            padding: 20px;
-            animation: pulse 0.5s infinite alternate;
+            color: lime;
+            font-size: 2rem;
+            transition: opacity 0.5s;
         }
-        
-        @keyframes pulse {
-            from { background-position: 0 0; }
-            to { background-position: 40px 40px; }
+        .spinner {
+            border: 8px solid #333;
+            border-top: 8px solid #ff00ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
-        
-        .error-message {
-            font-size: 1.8rem;
-            color: var(--satan-purple);
-            text-shadow: 0 0 10px var(--satan-purple);
-            margin: 20px 0;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        /* --- TOOLBAR: WINDOWS 98 DO INFERNO --- */
-        .windows-toolbar {
-            background: linear-gradient(to bottom, #c0c0c0 0%, #a0a0a0 100%);
-            border-bottom: 3px solid #808080;
-            border-top: 2px solid white;
-            padding: 5px;
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- NOVO HEADER: BARRA DE FERRAMENTAS RETRO --- */
+        .retro-toolbar {
+            background: #c0c0c0; /* Cinza Windows 95 */
+            border-bottom: 3px solid #404040;
+            padding: 5px 10px;
+            font-family: 'Tahoma', sans-serif; /* Fonte de sistema antiga */
             display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
+            align-items: center;
+            gap: 10px;
+            box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #808080;
+            position: relative;
             z-index: 100;
-            animation: glitch 5s infinite;
         }
-        
-        @keyframes glitch {
-            0%, 100% { transform: translateX(0); }
-            2%, 3% { transform: translateX(-2px); }
-            5%, 6% { transform: translateX(2px); }
-        }
-        
-        .start-button {
-            background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
-            border: 2px solid #808080;
-            border-radius: 3px;
-            padding: 3px 10px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: inset 1px 1px 0 white, inset -1px -1px 0 #808080;
+
+        .win-btn {
+            width: 30px;
+            height: 30px;
+            background: #c0c0c0;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #404040;
+            border-bottom: 2px solid #404040;
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-family: 'Tahoma', sans-serif;
-            font-size: 0.9rem;
-        }
-        
-        .taskbar-item {
-            background: #d0d0d0;
-            border: 1px solid #808080;
-            padding: 2px 8px;
-            margin: 1px;
-            border-radius: 2px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            box-shadow: inset 1px 1px 0 white;
-            animation: vibrate 3s infinite;
-        }
-        
-        @keyframes vibrate {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-1px); }
-            75% { transform: translateX(1px); }
-        }
-        
-        /* --- ÁREA PRINCIPAL: CAOS ORGANIZADO --- */
-        .main-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 15px;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 25px;
-            position: relative;
-        }
-        
-        /* --- WIDGETS: TOTALMENTE DESALINHADOS --- */
-        .widget {
-            border: 4px solid black;
-            background: white;
-            color: black;
-            padding: 15px;
-            position: relative;
-            box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
-            transform-origin: center;
-            transition: transform 0.2s;
-        }
-        
-        .widget:hover {
-            transform: scale(1.02) rotate(1deg);
-        }
-        
-        .widget-buy {
-            background: linear-gradient(135deg, var(--redbull-yellow) 0%, #ffcc00 100%);
-            border-color: red;
-            box-shadow: 10px 10px 0 red;
-            transform: rotate(-3deg);
-            text-align: center;
-            animation: pulse-buy 2s infinite;
-        }
-        
-        @keyframes pulse-buy {
-            0%, 100% { box-shadow: 10px 10px 0 red; }
-            50% { box-shadow: 15px 15px 0 #ff6b6b; }
-        }
-        
-        .widget-lore {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M0 0L20 20M20 0L0 20" stroke="%230000ff" stroke-width="0.5" opacity="0.1"/></svg>');
-            border-color: blue;
-            box-shadow: 10px 10px 0 blue;
-            transform: rotate(2deg);
-        }
-        
-        .widget-social {
-            background: linear-gradient(135deg, cyan 0%, #a0ffff 100%);
-            border-color: black;
-            box-shadow: 10px 10px 0 black;
-            transform: rotate(4deg);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .widget-social::before {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.1) 10px,
-                rgba(0,0,0,0.1) 20px
-            );
-            transform: rotate(45deg);
-            animation: scanline 8s linear infinite;
-        }
-        
-        @keyframes scanline {
-            0% { transform: translateY(0) rotate(45deg); }
-            100% { transform: translateY(100%) rotate(45deg); }
-        }
-        
-        /* --- COMIC VIEWER: TOTAL BROKEN --- */
-        .comic-container {
-            grid-column: 1 / span 3;
-            background: #111;
-            border: 6px solid var(--gas-green);
-            box-shadow: 15px 15px 0 var(--satan-purple);
-            padding: 20px;
-            position: relative;
-            text-align: center;
-            min-height: 400px;
-            overflow: hidden;
-            animation: border-pulse 1.5s infinite;
-        }
-        
-        @keyframes border-pulse {
-            0%, 100% { box-shadow: 15px 15px 0 var(--satan-purple); }
-            50% { box-shadow: 20px 20px 0 #ff69b4; }
-        }
-        
-        .comic-title {
-            font-family: 'MS Paint', 'Comic Sans MS', cursive;
-            font-size: 3.5rem;
-            color: var(--ramen-orange);
-            text-shadow: 3px 3px 0 black, 6px 6px 0 var(--satan-purple);
-            margin: 10px 0;
-            letter-spacing: -2px;
-            animation: text-shake 0.1s infinite;
-        }
-        
-        @keyframes text-shake {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-2px, 2px); }
-            50% { transform: translate(2px, -2px); }
-            75% { transform: translate(-2px, -2px); }
-            100% { transform: translate(0, 0); }
-        }
-        
-        .comic-img-container {
-            background: white;
-            border: 8px solid black;
-            min-height: 300px;
-            display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .comic-img {
-            max-width: 100%;
-            max-height: 300px;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .comic-img:hover {
-            transform: scale(1.05);
-        }
-        
-        /* --- BOTÕES: ESTILO "BOTÃO DO PAULINHO" --- */
-        .meme-button {
-            display: inline-block;
-            background: var(--redbull-yellow);
-            color: black;
-            font-family: 'Comic Sans MS', cursive;
-            font-size: 1.8rem;
-            font-weight: 900;
-            padding: 15px 40px;
-            border: 6px solid black;
-            box-shadow: 8px 8px 0 black;
-            cursor: pointer;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: button-float 3s infinite;
-        }
-        
-        @keyframes button-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .meme-button:hover {
-            background: orange;
-            box-shadow: 12px 12px 0 #ff6b35;
-            transform: translate(3px, 3px);
-        }
-        
-        .meme-button:active {
-            transform: translate(8px, 8px);
-            box-shadow: 3px 3px 0 black;
-        }
-        
-        /* --- EFEITOS ESPECIAIS (CAOS CONTROLADO) --- */
-        .broken-screen {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                linear-gradient(90deg, transparent 50%, rgba(0,255,0,0.05) 50%),
-                linear-gradient(0deg, transparent 50%, rgba(255,0,255,0.05) 50%);
-            background-size: 4px 4px, 4px 4px;
-            pointer-events: none;
-            opacity: 0.3;
-            z-index: -1;
-        }
-        
-        /* --- RESPONSIVO (OU FALTA DELE) --- */
-        @media (max-width: 1000px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .widget {
-                transform: none !important;
-                max-width: 100%;
-                margin: 10px auto;
-            }
-            
-            .comic-title {
-                font-size: 2.5rem;
-            }
-        }
-        
-        /* --- CURSOR CUSTOM (PORQUE PORRA) --- */
-        body {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="red" stroke-width="2"/><text x="12" y="16" font-family="Arial" font-size="12" fill="yellow" text-anchor="middle">$</text></svg>'), auto;
-        }
-        
-        /* --- ALERTA DE BATERIA --- */
-        .battery-alert {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: red;
-            color: white;
-            padding: 10px 20px;
-            border: 3px solid yellow;
             font-weight: bold;
             font-size: 1.2rem;
-            box-shadow: 0 0 20px red;
-            z-index: 1000;
-            animation: blink 0.5s infinite;
+            cursor: pointer;
+            color: black;
+            user-select: none;
         }
+        .win-btn:active {
+            border: 2px solid #404040;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+
+        .address-bar {
+            flex-grow: 1;
+            background: white;
+            border: 2px solid #808080;
+            border-bottom: 2px solid #fff; /* Inset effect */
+            border-right: 2px solid #fff;
+            padding: 4px 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: black;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .status-badge {
+            background: navy;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* --- LAYOUT CENTRAL --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* --- COMIC VIEWER (O DESTAQUE) --- */
+        .comic-stage {
+            background: #111;
+            border: 4px solid #00ff00;
+            box-shadow: 10px 10px 0px #ff00ff;
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .comic-header-bar {
+            background: #00ff00;
+            color: black;
+            padding: 5px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Container da imagem para evitar pulos de layout */
+        .img-wrapper {
+            background: white;
+            min-height: 300px; /* Altura mínima para não colapsar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            overflow: hidden;
+        }
+
+        .comic-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0; 
+            transition: opacity 0.2s ease-in;
+        }
+        .comic-img.loaded {
+            opacity: 1;
+        }
+
+        /* CONTROLES DE NAVEGAÇÃO */
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            background: #222;
+            padding: 15px;
+            border: 2px dashed #555;
+        }
+
+        .btn-comic {
+            background: yellow;
+            color: black;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            padding: 10px 30px;
+            border: 4px solid black;
+            box-shadow: 5px 5px 0 black;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .btn-comic:hover { transform: scale(1.05); background: orange; }
+        .btn-comic:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 black; }
+        .btn-comic:disabled { background: gray; cursor: not-allowed; opacity: 0.5; }
+
+        /* --- GRID DE INFORMAÇÕES (ABAIXO DO QUADRINHO) --- */
+        .chaos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr; /* Esquerda menor, Meio maior, Direita menor */
+            gap: 20px;
+        }
+
+        .widget {
+            background: white;
+            color: black;
+            border: 4px solid black;
+            padding: 15px;
+            position: relative;
+        }
+
+        /* WIDGET 1: COMPRA (ESQUERDA) */
+        .widget-buy {
+            background: #00ff00;
+            transform: rotate(-2deg);
+            box-shadow: -8px 8px 0 #fff;
+            text-align: center;
+        }
+
+        /* WIDGET 2: LORE (MEIO) */
+        .widget-lore {
+            background: #fff;
+            border: 4px solid blue;
+            box-shadow: 8px 8px 0 rgba(0,0,255,0.5);
+        }
+
+        /* WIDGET 3: SOCIALS (DIREITA) */
+        .widget-social {
+            background: cyan;
+            transform: rotate(2deg);
+            box-shadow: 8px 8px 0 #000;
+            text-align: center;
+        }
+
+        h2 { margin-top: 0; text-transform: uppercase; border-bottom: 3px solid black; }
         
-        @keyframes blink {
-            50% { opacity: 0.5; }
+        .lore-list li { margin-bottom: 10px; border-bottom: 1px dashed gray; }
+
+        .big-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            background: black;
+            color: white;
+            margin-top: 10px;
+            border: 2px solid white;
         }
+        .big-btn:hover { background: #333; color: yellow; }
+
+        .ca-box {
+            background: #eee;
+            padding: 5px;
+            font-family: monospace;
+            word-break: break-all;
+            cursor: pointer;
+            border: 2px dashed red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 800px) {
+            .chaos-grid {
+                grid-template-columns: 1fr; /* Vira uma coluna só no celular */
+            }
+            .widget { transform: none !important; }
+            .btn-comic { padding: 10px 15px; font-size: 1.2rem; }
+            .address-bar { font-size: 0.7rem; } /* Diminui a fonte da barra no mobile */
+        }
+
     </style>
 </head>
 <body>
-    <!-- PRELOADER: TELA AZUL DA MORTE -->
+
     <div id="loader">
-        <div style="font-size: 4rem; color: #0078d7; text-shadow: 0 0 10px white;">💀</div>
-        <div class="error-message">BLUE SCREEN OF MEME</div>
-        <div style="font-size: 1.2rem; color: #e74c3c; margin: 10px 0;">CRITICAL ERROR: VITALIK_NOT_FOUND.EXE</div>
-        <div style="font-size: 0.9rem; color: #ccc; margin: 20px 0; max-width: 500px; line-height: 1.5;">
-            SYSTEM RECOVERY IN PROGRESS...<br>
-            Downloading emergency ramen supply...<br>
-            Locating Richard Heart's couch GPS coordinates...<br>
-            Purging sharting modules...
-        </div>
-        <div style="width: 300px; height: 20px; background: #333; border: 2px solid #00ff00; margin: 20px 0; overflow: hidden;">
-            <div style="height: 100%; background: var(--gas-green); width: 0%; animation: load-bar 3s forwards;"></div>
-        </div>
-        <div style="font-size: 0.8rem; color: #aaa;">DO NOT TURN OFF YOUR PC</div>
+        <div class="spinner"></div>
+        <p>LOADING MEMES...</p>
+        <p style="font-size: 1rem; color: #ff00ff;">Downloading RAM...</p>
     </div>
-    
-    <!-- TOOLBAR: INICIO DO CAOS -->
-    <div class="windows-toolbar">
-        <div class="start-button">
-            <span>⊞</span> START
+
+    <div class="retro-toolbar">
+        <div class="win-btn" title="Back (Broken)">⬅</div>
+        <div class="win-btn" title="Forward (Broken)">➡</div>
+        <div class="win-btn" title="Stop Loading">🛑</div>
+        <div class="win-btn" title="Refresh Ramen">🍜</div>
+
+        <div class="address-bar">
+            <span class="status-badge">NOT SECURE</span>
+            <span>C:\Users\Vitalek\Desktop\HOW_TO_KILL_GAS_FEES.exe</span>
         </div>
-        <div class="taskbar-item" onclick="showMessage('GASLAND.EXE')">Gasland</div>
-        <div class="taskbar-item" onclick="showMessage('RAMEN.exe')">Ramen</div>
-        <div class="taskbar-item" onclick="showMessage('SHARTING_FIX.exe')">Anti-Shart</div>
-        <div class="taskbar-item" onclick="showMessage('VITALIK_SOFA.exe')">Sofa Locator</div>
-        <div style="flex-grow: 1;"></div>
-        <div class="taskbar-item" style="background: #ff5252; color: white;">12:34 PM</div>
-        <div class="taskbar-item" style="background: #4CAF50; color: white;">🔋 3%</div>
+
+        <div class="win-btn" style="width: auto; padding: 0 10px; font-size: 0.8rem;">
+            GO!
+        </div>
     </div>
-    
-    <!-- CONTAINER PRINCIPAL -->
-    <div class="main-container">
-        <!-- COMIC VIEWER - O CORAÇÃO DO CAOS -->
-        <div class="comic-container">
-            <div class="broken-screen"></div>
-            <div class="comic-title">$VITAL IS GONE</div>
-            <div style="font-size: 1.5rem; color: var(--satan-purple); margin-bottom: 20px;">
-                "THEY TOOK MY GAS MONEY FOR THERAPY" - VITALEK BUTEROUT
+
+    <div class="container">
+
+        <div class="comic-stage">
+            <div class="comic-header-bar">
+                <span>COMIC_VIEWER_V1.0.exe</span>
+                <span>[X]</span>
             </div>
             
-            <div class="comic-img-container">
-                <img id="mainComic" class="comic-img" 
-                     src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='300' viewBox='0 0 500 300'><rect width='500' height='300' fill='%23e0e0e0'/><circle cx='250' cy='150' r='50' fill='%23ffcc00'/><text x='250' y='160' font-family='Arial' font-size='24' fill='black' text-anchor='middle'>:<?</text><text x='250' y='220' font-family='Arial' font-size='16' fill='red' text-anchor='middle'>404 COMIC NOT FOUND</text></svg>"
-                     alt="Vitalek crying on Richard Heart's couch">
+            <div class="img-wrapper">
+                <img id="comicDisplay" class="comic-img" src="" alt="Comic Page">
             </div>
-            
-            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-                <button class="meme-button" onclick="changeComic('sad')">CRY</button>
-                <button class="meme-button" onclick="changeComic('angry')">SHART</button>
-                <button class="meme-button" onclick="changeComic('happy')">RAMEN</button>
-            </div>
-            
-            <div style="margin-top: 25px; padding: 15px; background: #222; border: 3px dashed var(--gas-green); font-size: 1.2rem;">
-                <marquee behavior="scroll" direction="left" scrollamount="5">
-                    💀 CURRENT STATUS: VITALIK IS LIVING ON RICHARD HEART'S COUCH • NEXT LAUNCH: WHEN HIS THERAPY BILLS ARE PAID • WARNING: THIS TOKEN MAY CAUSE EXCESSIVE LAUGHTER AND GAS
-                </marquee>
-            </div>
-        </div>
-        
-        <!-- WIDGET DE COMPRA - ESQUERDA -->
-        <div class="widget widget-buy">
-            <h1 style="color: red; text-shadow: 2px 2px 0 black; margin-top: 0; font-family: 'MS Paint', cursive;">🚨 EMERGENCY BUY 🚨</h1>
-            <div style="background: black; padding: 15px; border: 3px solid red; margin: 15px 0;">
-                <div style="font-size: 4rem; text-align: center; color: var(--redbull-yellow); font-weight: bold; font-family: 'MS Paint', cursive; text-shadow: 3px 3px 0 red;">
-                    $VITAL
+
+            <div class="nav-controls">
+                <button class="btn-comic" id="prevBtn" onclick="flipPage(-1)">PREV</button>
+                <div style="background:white; color:black; padding: 10px; font-weight:bold; border:2px solid black; min-width: 100px; display:flex; align-items:center; justify-content:center;">
+                    <span id="pageCount">PAGE 0/6</span>
                 </div>
+                <button class="btn-comic" id="nextBtn" onclick="flipPage(1)">NEXT</button>
             </div>
-            <p style="font-size: 1.3rem; font-weight: bold;">BUY BEFORE HE FINDS A JOB!</p>
-            
-            <button class="meme-button" style="background: red; color: yellow; width: 100%; margin-top: 15px;" onclick="buyToken()">
-                💸 GET $VITAL NOW! 💸
-            </button>
-            
-            <div style="background: #333; color: var(--gas-green); padding: 10px; margin: 15px 0; border: 2px solid var(--gas-green); font-family: monospace; font-size: 0.9rem; cursor: pointer;" onclick="copyCA()">
-                CONTRACT: 0xV174L3K8U773R0U7...<br>
-                (CLICK TO COPY - NO RUG HERE)
-            </div>
-            
-            <div style="background: orange; padding: 10px; margin-top: 15px; border: 2px solid black; font-weight: bold; text-align: center;">
-                LIQUIDITY: 🔥 BURNED 🔥<br>
-                "NO LIQUIDITY = NO PROBLEMS" - SATAN
-            </div>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #aaa;">*USE KEYBOARD ARROWS TO NAVIGATE*</p>
         </div>
-        
-        <!-- WIDGET DE LORE - CENTRO -->
-        <div class="widget widget-lore">
-            <h1 style="color: blue; border-bottom: 3px solid blue; padding-bottom: 5px; font-family: 'MS Paint', cursive;">📖 OFFICIAL VITALIK LORE</h1>
-            
-            <div style="background: #e3f2fd; padding: 15px; border-left: 5px solid blue; margin: 15px 0;">
-                <p style="font-size: 1.2rem; font-style: italic;">
-                    "After the Great Gas Fee War of 2025, Vitalek Buterout was exiled from Gasland. He now survives on Richard Heart's couch, trading his last ETH for instant ramen while plotting his comeback."
-                </p>
-            </div>
-            
-            <ul style="padding-left: 20px; font-size: 1.1rem; line-height: 1.6;">
-                <li><strong>ORIGIN:</strong> Born from the tears of failed sharding</li>
-                <li><strong>WEAKNESS:</strong> High gas fees and professional therapy</li>
-                <li><strong>SUPERPOWER:</strong> Can smell ETH from 3 blocks away</li>
-                <li><strong>ENEMY:</strong> "The Sharting Council" (Vitalik's alter ego)</li>
-                <li><strong>QUOTE:</strong> "If you don't hold $VITAL, who will pay for my ramen?"</li>
-            </ul>
-            
-            <div style="background: #ffcccb; padding: 10px; margin-top: 15px; border: 2px solid red;">
-                <strong>⚠️ WARNING:</strong> This token contains 97% meme, 3% utility, and 100% broken English.
-            </div>
-        </div>
-        
-        <!-- WIDGET SOCIAL - DIREITA -->
-        <div class="widget widget-social">
-            <h1 style="color: black; border-bottom: 3px solid black; padding-bottom: 5px; font-family: 'MS Paint', cursive;">👁️ JOIN THE CULT 👁️</h1>
-            
-            <div style="display: flex; justify-content: center; margin: 20px 0;">
-                <div style="width: 120px; height: 120px; background: #6a11cb; border-radius: 60px; display: flex; justify-content: center; align-items: center; border: 5px solid yellow;">
-                    <span style="font-size: 4rem;">👁️</span>
-                </div>
-            </div>
-            
-            <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;">
-                2,841,920 MEME WARRIORS<br>
-                (and growing)
-            </p>
-            
-            <button class="meme-button" style="background: #1da1f2; width: 100%; margin-bottom: 10px;" onclick="openSocial('twitter')">
-                🐦 FOLLOW ON TWITTER
-            </button>
-            
-            <button class="meme-button" style="background: #5482AB; width: 100%; margin-bottom: 10px;" onclick="openSocial('telegram')">
-                📱 JOIN TELEGRAM
-            </button>
-            
-            <button class="meme-button" style="background: #ff4d4d; width: 100%;" onclick="openSocial('tiktok')">
-                💃 WATCH DANCE CHALLENGE
-            </button>
-            
-            <div style="margin-top: 25px; padding: 10px; background: #f8d7da; border: 2px solid red; font-weight: bold; text-align: center; font-size: 0.9rem;">
-                WARNING: Joining this cult may cause:<br>
-                • Excessive laughter<br>
-                • Sudden urge to buy ramen<br>
-                • Permanent broken English
-            </div>
-        </div>
-    </div>
-    
-    <!-- ALERTA DE BATERIA - PORQUE SIM -->
-    <div class="battery-alert">
-        🔋 BATTERY CRITICAL: VITALIK'S HOPE AT 3%
-    </div>
-    
-    <script>
-        // ANIMAÇÃO DO PRELOADER
-        setTimeout(() => {
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-                // Ativa efeitos depois que o loader some
-                activateEffects();
-            }, 500);
-        }, 3500);
-        
-        function activateEffects() {
-            // Efeito de piscar no título
-            setInterval(() => {
-                const title = document.querySelector('.comic-title');
-                if (Math.random() > 0.7) {
-                    title.style.animation = 'none';
-                    setTimeout(() => {
-                        title.style.animation = 'text-shake 0.1s infinite';
-                    }, 100);
-                }
-            }, 2000);
-            
-            // Mudança automática de quadrinho
-            setInterval(() => {
-                const comics = ['sad', 'angry', 'happy'];
-                changeComic(comics[Math.floor(Math.random() * comics.length)]);
-            }, 8000);
-        }
-        
-        function changeComic(mood) {
-            const img = document.getElementById('mainComic');
-            let svg;
-            
-            switch(mood) {
-                case 'sad':
-                    svg = `<svg xmlns='http://www.w3.org/2000/svg' width='500' height='300' viewBox='0 0 500 300'>
-                        <rect width='500' height='300' fill='%23e0e0e0'/>
-                        <circle cx='250' cy='120' r='60' fill='%23ffcc00'/>
-                        <circle cx='230' cy='110' r='10' fill='black'/>
-                        <circle cx='270' cy='110' r='10' fill='black'/>
-                        <path d='M230 150 Q250 170 270 150' stroke='black' stroke-width='5' fill='none'/>
-                        <rect x='100' y='200' width='300' height='80' fill='%238d6e63' rx='10'/>
-                        <text x='250' y='250' font-family='Arial' font-size='16' fill='black' text-anchor='middle'>Vitalek crying on Richard Heart's couch</text>
-                    </svg>`;
-                    break;
-                case 'angry':
-                    svg = `<svg xmlns='http://www.w3.org/2000/svg' width='500' height='300' viewBox='0 0 500 300'>
-                        <rect width='500' height='300' fill='%23e0e0e0'/>
-                        <circle cx='250' cy='120' r='60' fill='%23ff5252'/>
-                        <circle cx='230' cy='110' r='15' fill='black'/>
-                        <circle cx='270' cy='110' r='15' fill='black'/>
-                        <path d='M230 150 Q250 130 270 150' stroke='black' stroke-width='5' fill='none'/>
-                        <rect x='150' y='180' width='200' height='100' fill='%236a1b9a'/>
-                        <text x='250' y='240' font-family='Arial' font-size='20' fill='white' text-anchor='middle'>SHARTING MODE</text>
-                        <path d='M240 185 L260 185 M245 190 L255 190' stroke='yellow' stroke-width='3'/>
-                    </svg>`;
-                    break;
-                case 'happy':
-                    svg = `<svg xmlns='http://www.w3.org/2000/svg' width='500' height='300' viewBox='0 0 500 300'>
-                        <rect width='500' height='300' fill='%23e0e0e0'/>
-                        <circle cx='250' cy='120' r='60' fill='%234CAF50'/>
-                        <circle cx='230' cy='110' r='10' fill='black'/>
-                        <circle cx='270' cy='110' r='10' fill='black'/>
-                        <path d='M230 150 Q250 170 270 150' stroke='black' stroke-width='5' fill='none'/>
-                        <rect x='200' y='200' width='100' height='60' fill='%23ff9800'/>
-                        <text x='250' y='235' font-family='Arial' font-size='18' fill='white' text-anchor='middle'>RAMEN</text>
-                        <path d='M220 180 L280 180' stroke='red' stroke-width='3' stroke-dasharray='5,5'/>
-                    </svg>`;
-                    break;
-            }
-            
-            img.src = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-        }
-        
-        function buyToken() {
-            alert("ERROR: VITALIK IS STILL HIDING IN THE BATHROOM.\n\nPlease wait while he finishes his therapy session and comes back to sign the contract.\n\nNEXT BUY WINDOW: WHEN GAS FEES < $0.01");
-            
-            // Efeito visual de erro
-            const button = event.target;
-            button.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                button.style.transform = '';
-            }, 200);
-        }
-        
-        function copyCA() {
-            navigator.clipboard.writeText("0xV174L3K8U773R0U7H34R7C0UCHD0N'7JUDG3M3");
-            const originalText = event.target.innerHTML;
-            event.target.innerHTML = "🔥 COPIED VITALIK'S DNA! 🔥";
-            event.target.style.background = "#ff4d4d";
-            
-            setTimeout(() => {
-                event.target.innerHTML = originalText;
-                event.target.style.background = "#333";
-            }, 2000);
-        }
-        
-        function openSocial(platform) {
-            let url;
-            switch(platform) {
-                case 'twitter': url = "https://x.com/vitalik"; break;
-                case 'telegram': url = "https://t.me/vitalik_couch"; break;
-                case 'tiktok': url = "https://tiktok.com/@vitalik_ramen_dance"; break;
-            }
-            
-            const popup = window.open("", "_blank", "width=600,height=400");
-            popup.document.write(`
-                <html>
-                <body style="background:#000; color:#0f0; font-family: 'Comic Sans MS'">
-                    <h1 style="color:red">⚠️ SCAM ALERT ⚠️</h1>
-                    <p>This is not the real ${platform} link!</p>
-                    <p>Real links are in the official docs (which don't exist)</p>
-                    <p>Don't trust anyone - not even this popup!</p>
-                    <button onclick="window.close()" style="background:yellow; padding:10px; border:3px solid black; font-size:1.2rem; margin-top:20px">CLOSE AND REPORT</button>
-                </body>
-                </html>
-            `);
-        }
-        
-        function showMessage(app) {
-            alert(`APP ERROR: ${app} is not compatible with this version of reality.\n\nPlease upgrade your brain or downgrade your expectations.`);
-        }
-        
-        // Efeito de cursor customizado (só para desktop)
-        document.addEventListener('mousemove', (e) => {
-            if (window.innerWidth > 768) {
-                const cursor = document.createElement('div');
-                cursor.style.position = 'fixed';
-                cursor.style.width = '30px';
-                cursor.style.height = '30px';
-                cursor.style.borderRadius = '50%';
-                cursor.style.background = 'rgba(255,0,255,0.3)';
-                cursor.style.pointerEvents = 'none';
-                cursor.style.zIndex = '9999';
-                cursor.style.transform = 'translate(-50%, -50%)';
-                cursor.style.left = e.pageX + 'px';
-                cursor.style.top = e.pageY + 'px';
-                cursor.style.boxShadow = '0 0 10px #ff00ff';
-                document.body.appendChild(cursor);
+
+        <div class="chaos-grid">
+
+            <div class="widget widget-buy">
+                <h2>💰 GET RICH</h2>
+                <img src="logo.png" style="width: 100px; border-radius: 50%; border: 3px solid black;">
+                <p>Support Vitalek's Ramen Addiction.</p>
+                <a href="https://pump.tires/how-it-works" target="_blank" class="big-btn">BUY $VITAL</a>
                 
-                setTimeout(() => {
-                    cursor.remove();
-                }, 100);
+                <div class="ca-box" onclick="copyCA(this)">
+                    CA: 0x...<br>(CLICK COPY)
+                </div>
+            </div>
+
+            <div class="widget widget-lore">
+                <h2 style="color: blue;">📜 THE SACRED TEXTS</h2>
+                <ul class="lore-list" style="padding-left: 20px;">
+                    <li><strong>Origin:</strong> Escaped "Gasland" on a raft.</li>
+                    <li><strong>Location:</strong> Richard Heart's Couch.</li>
+                    <li><strong>Enemy:</strong> High Gas Fees (Evil).</li>
+                    <li><strong>Superpower:</strong> Can code while sleeping.</li>
+                </ul>
+                <div style="background: #e1f5fe; padding: 10px; border-left: 5px solid blue;">
+                    <em>"Sharding? Is that when you have an accident in pants?"</em> - Vitalek
+                </div>
+            </div>
+
+            <div class="widget widget-social">
+                <h2>🌐 JOIN CULT</h2>
+                <p>Don't be alone.</p>
+                <a href="https://twitter.com" target="_blank" class="big-btn" style="background: #1da1f2;">TWITTER</a>
+                <a href="https://t.me" target="_blank" class="big-btn" style="background: #0088cc; margin-top: 10px;">TELEGRAM</a>
+                <p style="margin-top:20px; font-size:0.7rem;">© 2025 Vitalek Meme Dept.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // CONFIGURAÇÕES
+        const totalPages = 6;
+        let currentPage = 0;
+        const imgElement = document.getElementById('comicDisplay');
+        const pageLabel = document.getElementById('pageCount');
+        const loader = document.getElementById('loader');
+
+        // ARRAY PARA GUARDAR IMAGENS PRÉ-CARREGADAS
+        const preloadedImages = [];
+
+        // FUNÇÃO DE PRELOAD (RESOLVE O LAG)
+        function preloadImages() {
+            let loadedCount = 0;
+
+            for (let i = 1; i <= totalPages; i++) {
+                const img = new Image();
+                img.src = `page${i}.png`;
+                img.onload = () => {
+                    loadedCount++;
+                    // Se carregou todas, esconde o loader e mostra a primeira página
+                    if (loadedCount === totalPages) {
+                        initComic();
+                    }
+                };
+                // Caso a imagem falhe (ex: 404), ainda conta para não travar o site
+                img.onerror = () => {
+                    loadedCount++;
+                    if (loadedCount === totalPages) initComic();
+                }
+                preloadedImages[i] = img; // Salva no índice correspondente (1 a 6)
             }
+        }
+
+        function initComic() {
+            // Esconde loader
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+            
+            // Mostra pag 1
+            updateDisplay();
+        }
+
+        // TROCAR PÁGINA
+        function flipPage(direction) {
+            const newPage = currentPage + direction;
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPage = newPage;
+                
+                // Pequeno efeito visual de troca
+                imgElement.classList.remove('loaded');
+                
+                // Timeout minúsculo para permitir o navegador registrar o fade-out
+                setTimeout(() => {
+                    updateDisplay();
+                }, 50);
+            }
+        }
+
+        function updateDisplay() {
+            // Usa a imagem que JÁ está na memória do navegador
+            if (preloadedImages[currentPage]) {
+                imgElement.src = preloadedImages[currentPage].src;
+            }
+            imgElement.classList.add('loaded'); // Fade in
+            
+            pageLabel.innerText = `PAGE ${currentPage}/${totalPages}`;
+            
+            // Atualiza botões
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+        }
+
+        // KEYBOARD SUPPORT (Setinhas)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") flipPage(1);
+            if (e.key === "ArrowLeft") flipPage(-1);
         });
-        
-        // Inicia com o quadrinho triste
-        window.onload = () => {
-            changeComic('sad');
-        };
+
+        // COPIAR CA
+        function copyCA(el) {
+            navigator.clipboard.writeText("0x... WAIT FOR LAUNCH");
+            let original = el.innerHTML;
+            el.style.background = "lime";
+            el.innerHTML = "COPIED!";
+            setTimeout(() => {
+                el.style.background = "#eee";
+                el.innerHTML = original;
+            }, 1000);
+        }
+
+        // INICIAR TUDO
+        window.onload = preloadImages;
+
     </script>
 </body>
 </html>
